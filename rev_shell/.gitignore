@@ -1,0 +1,6 @@
+.gdb_history
+peda-session-a.out.txt
+peda-session-shell.txt
+src/.gdb_history
+src/a.out
+src/peda-session-a.out.txt
