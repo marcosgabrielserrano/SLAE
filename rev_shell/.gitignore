@@ -5,3 +5,5 @@ src/.gdb_history
 src/a.out
 src/peda-session-a.out.txt
 RAWSHELL
+a.out
+bin/revshell
