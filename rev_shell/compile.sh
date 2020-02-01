@@ -27,7 +27,7 @@ if [ ! -z "$( genshl shell | grep "\x00" )" ]; then
 	exit 1
 fi
 
-echo -e "$SHELLCODE" > RAWSHELL
+echo -e ${SHELLCODE//\"} > RAWSHELL
 
 sed -i "s/char shellcode\[\] *= *.*\;/char shellcode\[\] = ${SHELLCODE//'\'/'\\'}\;/g" $2
 
