@@ -4,3 +4,4 @@ peda-session-shell.txt
 src/.gdb_history
 src/a.out
 src/peda-session-a.out.txt
+RAWSHELL
