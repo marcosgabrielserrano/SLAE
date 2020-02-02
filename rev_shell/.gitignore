@@ -7,3 +7,5 @@ src/peda-session-a.out.txt
 RAWSHELL
 a.out
 bin/revshell
+build.o
+shell
