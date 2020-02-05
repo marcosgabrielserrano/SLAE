@@ -8,7 +8,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 fi
 
 if [ "$1" == "STRIP" ]; then # just for Makefile
-	SHELLCODE=`genshl $2`
+	SHELLCODE=`./genshl $2`
 	sed -i "s/char shellcode\[\] *= *.*\;/char shellcode\[\] = ${SHELLCODE//'\'/'\\'}\;/g" $3
 	exit 0
 fi
@@ -21,8 +21,8 @@ clean() {
 nasm -f elf32 $1 -o build.o
 ld -m elf_i386 -o shell build.o
 
-SHELLCODE=`genshl shell`
-if [ ! -z "$( genshl shell | grep "\x00" )" ]; then
+SHELLCODE=`./genshl shell`
+if [ ! -z "$( ./genshl shell | grep "\x00" )" ]; then
 	echo "SHELLCODE HAS BAD CHARS!"
 	exit 1
 fi
