@@ -13,6 +13,12 @@ if [ "$1" == "STRIP" ]; then # just for Makefile
 	exit 0
 fi
 
+if [ "$1" == "STRIP2" ]; then # just for Makefile
+    SHELLCODE=`./genshl $2`
+    sed -i "s/char shellcode2\[\] *= *.*\;/char shellcode2\[\] = ${SHELLCODE//'\'/'\\'}\;/g" $3
+    exit 0
+fi
+
 clean() {
 	rm build.o
 	rm shell

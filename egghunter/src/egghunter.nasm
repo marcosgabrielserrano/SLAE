@@ -48,6 +48,5 @@ check_egg:
 	jne next_byte  ; jmp if first half of egg not found
 	cmp esi, [edi+4]
 	jne next_byte  ; jmp if second half of egg not found
+	add edi, 0x8
 	jmp edi
-test:
-	var: db "AAAAAAAA"
