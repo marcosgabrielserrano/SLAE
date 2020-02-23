@@ -28,8 +28,8 @@ for x in encoded_shellcode:
 	encoded_str += "\\x%02x" % x
 	encoded_str2 += "0x%02x," % x
 
-encoded_str += "\""
-encoded_str2 = encoded_str2[:-1]
+encoded_str += "\\xde\\xad\\xbe\\xef\""
+encoded_str2 += "0xde,0xad,0xbe,0xef"
 
 print "Length: %d" % len(encoded_shellcode)
 print encoded_str
