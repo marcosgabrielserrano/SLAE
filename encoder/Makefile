@@ -19,4 +19,7 @@ strip_shell:
 build_exe:
 	$(CC) -o $(ENCODER_OUT) $(C_SHELL_SRC)
 
+clean:
+	rm bin/*
+
 .PHONY: all
