@@ -8,7 +8,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 fi
 
 if [ "$1" == "STRIP" ]; then # just for Makefile
-	SHELLCODE=`genshl $2`
+	SHELLCODE=`./genshl $2`
 	sed -i "s/char shellcode\[\] *= *.*\;/char shellcode\[\] = ${SHELLCODE//'\'/'\\'}\;/g" $3
 	exit 0
 fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+COL=6
+
+if [ -z "$1" ]; then
+	echo "Enter program!"
+	exit 1
+fi
+
+MATCH=`objdump -d $1 -M intel | grep "[0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] [0-9a-fA-F][0-9a-fA-F] "`
+
+if [ ! -z "$MATCH" ]; then
+	COL=7
+fi
+
+objdump -d $1|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-$COL -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
