@@ -3,7 +3,7 @@ CC := gcc -fno-stack-protector -z execstack -m32
 ENCODER_OUT := bin/crypter
 
 build_crypter:
-	$(CC) $(SRC) -o $(ENCODER_OUT)
+	$(CC) -g $(SRC) -o $(ENCODER_OUT)
 
 clean:
 	rm bin/*
