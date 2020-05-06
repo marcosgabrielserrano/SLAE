@@ -92,7 +92,6 @@ _start:
 	; SETUP STACK FOR ARGUMENTS PASSED TO SYS_ACCEPT SYSCALL
 	;
 
-	push ecx              ; for *addr_len
 	push byte 0x10
 	push esp              ; for *addr_len
 	push esi              ; for *sockaddr_in (HELD SINCE BIND)
