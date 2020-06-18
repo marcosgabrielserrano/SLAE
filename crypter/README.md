@@ -13,4 +13,4 @@ Basic usage:
 
 6. `bin/crypter -r decrypt`  will decrypt and run your shellcode, remove -r if you don't want to run
 
-NOTE: 16 BYTE key_buf is the key, and can be replaced with any you choose
+NOTE: 16 BYTE key_buf is the key, and can be replaced with any you choose as long as it is 16 bytes
