@@ -8,7 +8,7 @@ global _start
 section .text
 
 _start:
-    shr ecx, 32 ; clear ecx
+    sub ecx, ecx; clear ecx
     mul ecx     ; clears eax/edx
     and ebx, eax ; clear ebx
     or bx, 0x462d
